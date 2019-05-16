@@ -1,0 +1,57 @@
+<div id='app'>
+  <input type="text" v-on:input="changeTitle">
+  <!-- string interpolation -->
+  <!-- can use function in curly braces but has to return a string -->
+  <!-- cannot use curly braces in any html attribute e.g. a href='{{ link }}' only where strings can work -->
+  <!-- when in vue instance, can evaluate simple js - no if/else statements etc but simple ternary and calculations can -->
+  <h1 v-once>{{ title }}</h1>
+  <p>{{ sayHello() }}<a v-bind:href='link'>Google</a></p>
+  <!-- escapes html - doesnt render html elements -->
+  <!-- only renders text -->
+  <p v-html='finishedLink'>{{ finishedLink }}</p>
+  <button v-on:click='increase(2, $event)'>Click</button>
+  <p>{{ counter }}</p>
+  <p v-on:mousemove='updateCoordinates'>Coordinates: {{ x }} / {{ y }}</p>
+  <!-- vuejs event modifier, which can be chained -->
+  <p v-on:mousemove.stop.prevent=''>DEADSPOT</p>
+  <button v-on:click='attachRed = !attachRed'>Red</button>
+  <!-- can set up an array of classes -->
+  <button v-bind:class='[divClasses]'>Red</button>
+  <!-- removes entire element and nested elements -->
+  <p v-if='show'>You can see me!</p>
+  <p v-else>I've been hidden</p>
+  <button v-on:click='show = !show'>{{ show ? "HIDE" : "SHOW" }}</button>
+  <!-- allows you to wrap multiple elements inside -->
+  <template v-if='show'>
+    <p>
+      Inside a template
+    </p>
+  </template>
+</div>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="./app.js"></script>
+
+
+<!-- directive is an instruction places in code -->
+<!-- v-bind is telling vue to bind something to my data (including functions) -->
+<!-- v-bind directive doesnt need curly braces because in vue template language -->
+<!-- v-once will render html only once -->
+<!-- v-html tells vue to ignore default behaviour and render html -->
+<!-- v-model two way binding -->
+<!-- v-on is the name of the event we want to listen to (events that are valid for the dom element selected) -->
+<!-- $event is saved event to pass prop and event -->
+<!-- vuejs event modifier, which can be chained e.g. event.preventdefault is v-on:click.prevent -->
+<!-- vuejs keyboard event, same as event modifier v-on:keyup.enter.space that listens to enter and space keys only -->
+
+<!-- v-if -->
+<!-- v-else-if -->
+<!-- v-else automatically refers to v-if before -->
+<!-- v-show for hiding rather than removing from dom -->
+<!-- v-for -->
+<!-- v-for='(ingredient, i) in ingredients' -->
+<!-- v-for allows nesting -->
+<!-- v-for='n in 10' -->
+
+<!-- button v-on:click='press' ref='myButton'> is a ref by Vue js on any html element. access by this.$refs.myButton -->
+<!-- $mount() is a method that is what 'el' does e.g. vm1.$mount('#app1')-->
